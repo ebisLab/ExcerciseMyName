@@ -24,7 +24,7 @@ export default function App() {
 
     console.log(inputData, "inside submit");
     // const diamond = Object.assign([], inputData);
-    const diamond = inputData.split("");
+    const diamond = inputData.toUpperCase().split("");
 
     console.log(diamond, "diamond");
     setChan([...diamond]);
