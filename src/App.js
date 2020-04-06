@@ -10,56 +10,27 @@ import {randomJumpingJacks, randomCrunches,randomSquats,  randomPushUps, randomW
 export default function App() {
   const [inputData, setInputData] = useState("");
   const [samp, setSamp] = useState();
-  const [chan, setChan] = useState();
-  const [beeD] = useState([]);
-  const [texting, setTexting] = useState([]);
   const [myself, setMyself] = useState();
 
   const submitted = () => {
-    // const myArray = ["60", "50", "20", "30", "15", "10"];
-    // var randomJumpingJacks = reps[Math.floor(Math.random() * reps.length)];
+   
 
     setInputData("");
     setSamp(inputData);
-
-    console.log(inputData, "inside submit");
-    // const diamond = Object.assign([], inputData);
     const diamond = inputData.toUpperCase().split("");
 
-    console.log(diamond, "diamond");
-    setChan([...diamond]);
 
-    console.log(chan, "are you here");
+    if (/[^a-z ]/i.test(inputData)) {
+      // exercise.textContent = 'Please enter letters and spaces only';
+      const word = 'HAW HAW'
+      return word;
+    }
 
-    let text = "";
+    let text = [];
     let me = [];
 
-    // for(let i=0; i< diamond.length; i++){
     for (let i of diamond) {
       switch (i) {
-        // case "e":
-        //   text += " Bubbles";
-        //   // text += randomJumpingJacks;
-        //   //  text.push("Blossom");
-        //   // console.log((text += " Bubbles"));
-        //   // console.log(text.push("Bubbles"));
-        //   console.log((text += me.push("Hi")));
-        //   console.log("inside Bubbles", me);
-        //   break;
-        // case "h":
-        //   text += ` ${randomJumpingJacks} Blossom`;
-        //   console.log(text, "text, inside H");
-        //   // text.push("Blossom");
-        //   console.log((text += me.push("IM")));
-        //   break;
-        // case "l":
-        //   text += " Buttercup";
-        //   console.log((text += me.push("INSIDE")));
-        //   // text.push("Buttercup");
-        //   break;
-        // case "o":
-        //   text += " Professor X";
-        //   break;
             case "A":
             case "I":
             case "N":
@@ -102,26 +73,18 @@ export default function App() {
             break;
             case " ":
                 /*text += " break ";*/
-            break;
+                break;
+            // case (/[^a-z ]/i.test(inputData)):
+            //  text += 'Please enter letters and spaces only';
+            // break;
            
             default:
+            
             text += "Please type letters only ";    
         }
-
-          
-      
-      // text += ' '
-      // text += "\n";
-      setTexting([text]);
-      console.log(text, "text");
-      console.log(me, "meeee outside about to set");
+      // setTexting([text]);
     }
 
-    // setTexting(text);
-
-    console.log(text, "<--text");
-    console.log(inputData, "inputdata");
-    console.log(me, "**MEEEE**");
     setMyself(me);
   };
 
@@ -129,27 +92,16 @@ export default function App() {
     setInputData(e.target.value);
   };
 
-  console.log("texXXXT", texting, "teXXX");
-  console.log("~~~~", myself);
-
   return (
     <div className="App">
-      <h1>{inputData ? "yes" : "no"}</h1>
       <h2>Start editing to see some magic happen!</h2>
 
       <input name="excercise" onChange={changed} value={inputData || ""} />
       <button onClick={submitted}>Submit</button>
 
-    
-      {/* {chan ? chan.map(item => <p>{item}</p>) : ""} */}
-      {/* {inputData? `You typed: ${inputData} `: ''} */}
      <p>{samp ? `You Typed ${samp}` : ''}</p> 
-    
-       
-        <p>
-          
-          {myself ? myself.map(item => <p>{item}</p>) : ""}
-      </p>
+
+      <p>{myself ? myself.map(item => <p>{item}</p>) : ""}</p>
     </div>
   );
 }
