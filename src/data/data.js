@@ -1,4 +1,5 @@
 export const reps = ["60", "50", "20", "30", "15", "10"];
+export const secs = ["60", "50", "20", "30", "15", "10"];
 
 export let randomJumpingJacks = reps[Math.floor(Math.random() * reps.length)];
 export let randomCrunches = reps[Math.floor(Math.random()*reps.length)];

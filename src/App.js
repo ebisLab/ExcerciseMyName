@@ -37,32 +37,79 @@ export default function App() {
     // for(let i=0; i< diamond.length; i++){
     for (let i of diamond) {
       switch (i) {
-        case "e":
-          text += " Bubbles";
-          // text += randomJumpingJacks;
-          //  text.push("Blossom");
-          // console.log((text += " Bubbles"));
-          // console.log(text.push("Bubbles"));
-          console.log((text += me.push("Hi")));
-          console.log("inside Bubbles", me);
-          break;
-        case "h":
-          text += ` ${randomJumpingJacks} Blossom`;
-          console.log(text, "text, inside H");
-          // text.push("Blossom");
-          console.log((text += me.push("IM")));
-          break;
-        case "l":
-          text += " Buttercup";
-          console.log((text += me.push("INSIDE")));
-          // text.push("Buttercup");
-          break;
-        case "o":
-          text += " Professor X";
-          break;
-        default:
-          text += " Type Something else";
-      }
+        // case "e":
+        //   text += " Bubbles";
+        //   // text += randomJumpingJacks;
+        //   //  text.push("Blossom");
+        //   // console.log((text += " Bubbles"));
+        //   // console.log(text.push("Bubbles"));
+        //   console.log((text += me.push("Hi")));
+        //   console.log("inside Bubbles", me);
+        //   break;
+        // case "h":
+        //   text += ` ${randomJumpingJacks} Blossom`;
+        //   console.log(text, "text, inside H");
+        //   // text.push("Blossom");
+        //   console.log((text += me.push("IM")));
+        //   break;
+        // case "l":
+        //   text += " Buttercup";
+        //   console.log((text += me.push("INSIDE")));
+        //   // text.push("Buttercup");
+        //   break;
+        // case "o":
+        //   text += " Professor X";
+        //   break;
+            case "A":
+            case "I":
+            case "N":
+            case "X":
+                text += me.push(`${randomJumpingJacks} Jumping Jacks`)
+             break;
+            case "B":
+            case "J":
+            case "Q":
+            case "Y":
+              text += me.push(`${randomCrunches} Crunches`)   
+              break;
+            case "C":
+            case "H":
+            case "T":
+              text += me.push(`${randomSquats} Squats`)
+            break;
+            case "D":
+            case "K":
+            case "R":
+            case "Z":
+              text += me.push(`${randomPushUps} Push ups`)   
+            break;
+            case "E":
+            case "L":
+            case "V":
+              text += me.push(`${randomWallSits} seconds Wall Sits`)
+            break;
+            case "F":
+            case "M":
+            case "O":
+            case "S":
+              text += me.push(`${randomBurpees} Burpees`)
+            break;
+            case "G":
+            case "P":
+            case "U":
+            case "W":
+              text += me.push(`${randomArmCircles} Arm Circles`)
+            break;
+            case " ":
+                /*text += " break ";*/
+            break;
+           
+            default:
+            text += "Please type letters only ";    
+        }
+
+          
+      
       // text += ' '
       // text += "\n";
       setTexting([text]);
@@ -93,22 +140,15 @@ export default function App() {
       <input name="excercise" onChange={changed} value={inputData || ""} />
       <button onClick={submitted}>Submit</button>
 
-      {samp}
-      {/* {chan} */}
-      {chan ? chan.map(item => <p>{item}</p>) : ""}
-      {chan ? beeD.map(item => <p>{item}</p>) : ""}
-      <p>
-        {console.log(Array.isArray(texting))}
-        {<li>{texting}</li>} <span> --- from for loop</span>
-        {texting.map(item => (
-          <li>{item}</li>
-        ))}
+    
+      {/* {chan ? chan.map(item => <p>{item}</p>) : ""} */}
+      {/* {inputData? `You typed: ${inputData} `: ''} */}
+     <p>{samp ? `You Typed ${samp}` : ''}</p> 
+    
+       
         <p>
-          {console.log("is this an array", Array.isArray(myself))} is this an
-          array
-          {console.log("hello", myself)}
+          
           {myself ? myself.map(item => <p>{item}</p>) : ""}
-        </p>
       </p>
     </div>
   );
