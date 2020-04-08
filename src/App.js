@@ -5,13 +5,15 @@
 
 import React, { useState } from "react";
 import "./App.css";
-import {randomJumpingJacks, randomCrunches,randomSquats,  randomPushUps, randomWallSits, randomBurpees, randomArmCircles} from './data/data'
+import {reps} from './data/data'
 
 export default function App() {
   const [inputData, setInputData] = useState("");
   const [samp, setSamp] = useState();
   const [myself, setMyself] = useState();
+const [myobj, setMyObj]=useState();
 
+  
   const submitted = () => {
    
 
@@ -28,14 +30,30 @@ export default function App() {
 
     let text = [];
     let me = [];
+    let obj =[];
+    let count = 0;
+    // var randomJumpingJacks;
 
     for (let i of diamond) {
+let idItem = count++ +1
+      console.log(Date.now(),  'inside for loop ID')
+      console.log(i.length, 'i')
+      console.log(count++ +1, '<---count')
+    let randomJumpingJacks = reps[Math.floor(Math.random() * reps.length)]
+    let randomCrunches = reps[Math.floor(Math.random()*reps.length)];
+    let randomSquats = reps[Math.floor(Math.random()*reps.length)];
+    let randomPushUps = reps[Math.floor(Math.random()*reps.length)];
+    let randomWallSits = reps[Math.floor(Math.random()*reps.length)];
+    let randomBurpees = reps[Math.floor(Math.random()*reps.length)];
+    let randomArmCircles = reps[Math.floor(Math.random()*reps.length)];
+
       switch (i) {
             case "A":
             case "I":
             case "N":
             case "X":
                 text += me.push(`${randomJumpingJacks} Jumping Jacks`)
+                text += obj.push({ id:idItem, reps: randomJumpingJacks,  excercise: 'Jumping Jacks', url: 'https://media.giphy.com/media/28etK3CCOH9CDrAqmX/giphy.gif'})
              break;
             case "B":
             case "J":
@@ -47,12 +65,15 @@ export default function App() {
             case "H":
             case "T":
               text += me.push(`${randomSquats} Squats`)
+              // me += me.push(`${randomSquats} Squats`)
             break;
             case "D":
             case "K":
             case "R":
             case "Z":
-              text += me.push(`${randomPushUps} Push ups`)   
+              text += me.push(`${randomPushUps} Push ups`)
+              text += obj.push({id:idItem, reps: randomPushUps,  excercise: 'Push ups', url: 'https://media.giphy.com/media/5t9IcXiBCyw60XPpGu/giphy.gif'})
+   
             break;
             case "E":
             case "L":
@@ -86,11 +107,16 @@ export default function App() {
     }
 
     setMyself(me);
+    setMyObj(obj)
+    // console.log(text)
+    console.log(me, '<--me')
+    console.log(obj, '<------obj')
   };
 
   const changed = e => {
     setInputData(e.target.value);
   };
+
 
   return (
     <div className="App">
@@ -101,7 +127,8 @@ export default function App() {
 
      <p>{samp ? `You Typed ${samp}` : ''}</p> 
 
-      <p>{myself ? myself.map(item => <p>{item}</p>) : ""}</p>
+      <div>{myself ? myself.map((item, key) => <p key={key}>{item}</p>) : ""}</div>
+      <div>{myobj ? myobj.map((item,key)=><div style={{width: '150px', overflow: 'auto', margin: '20px', borderRadius: '50%', border: '3px solid black'}} key={key}><img alt={item.excercise} style={{height: '149px'}} src={item.url} /></div>) : ''}</div>
     </div>
   );
 }
